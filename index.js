@@ -4,7 +4,6 @@ require('dotenv').config();
 
 const client = new Discord.Client();
 
-console.log(process.env.TOKEN);
 client.login(process.env.TOKEN);
 
 client.commands = new Discord.Collection()
