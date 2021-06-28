@@ -27,3 +27,9 @@ client.on('message', message => {
     if (!command) return
     command.run(message, args, client)
 })
+
+client.on('ready', () => {
+    client.user.setPresence({
+        activity: {type: 'WATCHING', url: 'https://open.spotify.com/embed/track/3Knohqfb9jeYzL6wMZiWLM', name: 'le prix chuter'}
+    })
+})
