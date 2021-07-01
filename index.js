@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const axios = require('axios');
 require('dotenv').config();
