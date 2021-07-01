@@ -15,16 +15,19 @@ module.exports = {
             message.channel.send(embed);
             return;
         }
+
+        const amount = parseFloat(args[0].replace(',', '.'));
+        
         axios.get('https://api.coingecko.com/api/v3/simple/price?ids=elrond-erd-2&vs_currencies=USD,EUR').then((result) => {
 
             const embed = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setURL('https://www.coingecko.com/en/coins/elrond')
                 .setAuthor('Elrond-Bot', 'https://cryptologos.cc/logos/elrond-egld-egld-logo.png?v=012', 'https://github.com/RobinCouet/elrond-bot')
-                .setDescription(args[0] + ' EGLD vaut actuellement : ')
+                .setDescription(amount + ' EGLD vaut actuellement : ')
                 .addFields(
-                    { name: '$ USD', value: (result.data['elrond-erd-2'].usd * args[0]).toLocaleString('fr-FR', {maximumFractionDigits:2}) + ' $', inline: true },
-                    { name: '€ EUR', value: (result.data['elrond-erd-2'].eur * args[0]).toLocaleString('fr-FR', {maximumFractionDigits:2}) + ' €', inline: true },
+                    { name: '$ USD', value: (result.data['elrond-erd-2'].usd * amount).toLocaleString('fr-FR', {maximumFractionDigits:2}) + ' $', inline: true },
+                    { name: '€ EUR', value: (result.data['elrond-erd-2'].eur * amount).toLocaleString('fr-FR', {maximumFractionDigits:2}) + ' €', inline: true },
                 )
                 .setTimestamp();
             message.channel.send(embed);
