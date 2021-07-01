@@ -30,11 +30,9 @@ client.on('message', message => {
 })
 
 client.on('ready', () => {
-
     setInterval(changePrice, 10000);
     function changePrice() {
         axios.get('https://api.coingecko.com/api/v3/simple/price?ids=elrond-erd-2&vs_currencies=USD').then((result) => {
-            console.log(result.data['elrond-erd-2'].usd);
             client.user.setPresence({
                 activity: {type: 'WATCHING', url: 'https://open.spotify.com/embed/track/3Knohqfb9jeYzL6wMZiWLM', name: result.data['elrond-erd-2'].usd + ' $'}
             })
